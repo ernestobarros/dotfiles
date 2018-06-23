@@ -2,6 +2,10 @@
 "       Coded/Modified by Ernesto Barros
 "         Date Sun. 23th June 2018
 " ========================================
+
+let g:python3_host_prog='C:\Program Files\Python36\python.exe'
+let g:python_host_prog='C:\Program Files\Python27\python.exe'
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Vim-Airline
@@ -81,14 +85,6 @@ Plug 'majutsushi/tagbar'
 " server
 Plug 'ternjs/tern_for_vim'
 
-" VimTex
-Plug 'lervag/vimtex'
-
-" NVIM-TypeScript
-Plug 'mhartington/nvim-typescript'
-" Syntax highlighting
-Plug 'leafgarland/typescript-vim'
-
 " UndoTree : See all undos
 Plug 'mbbill/undotree'
 
@@ -151,10 +147,8 @@ let g:netrw_winsize = 20
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType typescript setlocal omnifunc=TSComplete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
@@ -376,11 +370,6 @@ let g:table_mode_corner='|'
 " Undo tree
 let g:undotree_SetFocusWhenToggle=1
 
-" VimTex
-" View software
-let g:vimtex_view_method = 'zathura'
-
-
 
 "=====================================================
 " Spellchecking
@@ -412,11 +401,10 @@ endif
 
 " Set the full color compatibility for vim and terminal
 syntax enable
-colorscheme dracula
-set background=dark
-" colorscheme PaperColor
-" set background=light
 
+"=====================================================
+" DevIcons
+"=====================================================
 " DevIcons font adjustements (could not get Fira font to work properly)
 " ./ginit.vim for the gui font
 set guifont=DroidSansMono\ NF:h18
@@ -427,4 +415,12 @@ let g:WebDevIconsUnicodeDecorateFolderNodes=0
 " For spacing you can adjust with:
 let g:WebDevIconsNerdTreeAfterGlyphPadding = '	'
 let g:WebDevIconsNerdTreeGitPluginForceVAlign=0
+
+"=====================================================
+" Choose theme
+"=====================================================
+colorscheme dracula
+set background=dark
+" colorscheme PaperColor
+" set background=light
 
