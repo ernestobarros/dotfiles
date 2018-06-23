@@ -25,6 +25,7 @@ Plug 'mattn/emmet-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Indent Guide
 Plug 'nathanaelkane/vim-indent-guides'
