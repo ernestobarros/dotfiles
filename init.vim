@@ -27,6 +27,12 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
+"	Search : Pairs of handy bracket mappings.
+"	Examples
+" *[a*     |:previous|
+" *]q*     |:cnext|
+Plug 'tpope/vim-unimpaired'
+
 " Indent Guide
 Plug 'nathanaelkane/vim-indent-guides'
 
