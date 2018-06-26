@@ -403,6 +403,20 @@ endif
 " Set the full color compatibility for vim and terminal
 syntax enable
 
+
+"=====================================================
+" More fun with macros
+" google: You don’t need more than one cursor in vim
+"=====================================================
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+"=====================================================
+
+
 "=====================================================
 " DevIcons
 "=====================================================
