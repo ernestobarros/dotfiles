@@ -3,12 +3,15 @@
 
 # But not these files...
 !.gitignore
-!init.vim
-!ginit.vim
+!Microsoft.PowerShell_profile.ps1
 # etc...
 
 # ...even if they are in subdirectories
 !*/
+
+# Had to ignore this one too,
+# probably because it has .gitignore files in it's subdirectories.
+Modules/*
 
 # if the files to be tracked are in subdirectories
 !*/a/b/file1.txt
