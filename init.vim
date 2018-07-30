@@ -15,13 +15,16 @@ Plug 'vim-airline/vim-airline-themes'
 " Dracula theme
 Plug 'dracula/vim'
 
-" Easy Motion : faster move in vim
-" Press <Leader><Leader> and the letter that you want to go
-Plug 'easymotion/vim-easymotion'
+" OmniSharp
+" Plug 'OmniSharp/omnisharp-roslyn'
+Plug 'OmniSharp/omnisharp-vim'
 
-" Emmet : new ZenCoding
-" Use abreviations and then type : <C-Y>,
-Plug 'mattn/emmet-vim'
+
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'tpope/vim-dispatch'
+Plug 'vim-syntastic/syntastic'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -32,24 +35,6 @@ Plug 'tpope/vim-rhubarb'
 " *[a*     |:previous|
 " *]q*     |:cnext|
 Plug 'tpope/vim-unimpaired'
-
-" Indent Guide
-Plug 'nathanaelkane/vim-indent-guides'
-
-" Markdown
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-
-" Matchit : useful to switch between the start and the end of a function
-Plug 'tmhedberg/matchit'
 
 " NERDCommenter : Better comments in vim
 Plug 'scrooloose/nerdcommenter'
@@ -63,37 +48,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Numbers.vim
 Plug 'myusuf3/numbers.vim'
 
-" Paper color theme
-Plug 'NLKNguyen/papercolor-theme'
-
-" Plantuml-previewer
-Plug 'weirongxu/plantuml-previewer.vim'
-" Plantuml-syntax
-Plug 'aklt/plantuml-syntax'
-" Dependency
-Plug 'tyru/open-browser.vim'
-
 " Surround
 Plug 'tpope/vim-surround'
-
-" Table mode
-Plug 'dhruvasagar/vim-table-mode'
-
-" Tabular : useful for great alignement
-Plug 'godlygeek/tabular'
-
-" TagBar
-" Install ctags before use it
-Plug 'majutsushi/tagbar'
-
-" Tern
-" For JavaScript IDE features
-" Don't forget to run 'npm install' in this extension folder to install the
-" server
-Plug 'ternjs/tern_for_vim'
-
-" UndoTree : See all undos
-Plug 'mbbill/undotree'
 
 " Always load the vim-devicons as the very last one.
 Plug 'ryanoasis/vim-devicons'
@@ -101,8 +57,6 @@ Plug 'ryanoasis/vim-devicons'
 " All of your Plugins must be added before the following line
 call plug#end()             " required
 syntax enable               " required
-
-
 
 " ====================================================
 " Global configuration
@@ -132,8 +86,8 @@ set wildmode=list:longest,full      " Command <Tab> completion, list matches, th
 set winminheight=0                  " Windows can be 0 line height
 
 " Folding
-set foldenable          " Auto fold code
-set foldmethod=syntax   " Fold are defined by syntax highlighting
+"	set foldenable          " Auto fold code
+"	set foldmethod=syntax   " Fold are defined by syntax highlighting
 
 " Indentation
 " Don't enable smarindent or cindent with filetype plugin indent on
@@ -149,15 +103,6 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
-
-" Omni Completiton
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType typescript setlocal omnifunc=TSComplete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Search
 set hlsearch     " highlight the search result
@@ -227,9 +172,6 @@ endif
 " Use CTRL-Q to CTRL-V
 nnoremap <c-q> <c-v>
 
-" Rename word under cursor for the entire file
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
-
 "=====================================================
 " Keymap configuration
 "=====================================================
@@ -243,40 +185,11 @@ let maplocalleader = " "
 " Shortcuts
 nmap <silent> <Space><Tab> <Esc>/<++><Enter>:nohl<Enter>"_c4l
 
-" ALE
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
 " Buffer
 nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprevious<CR>
 nmap <leader>bf :bfirst<CR>
 nmap <leader>bd :bdelete<CR>
-
-" Disable the arrow keys
-" nmap <UP> <NOP>
-" nmap <DOWN> <NOP>
-" nmap <LEFT> <NOP>
-" nmap <RIGHT> <NOP>
-" imap <UP> <NOP>
-" imap <DOWN> <NOP>
-" imap <LEFT> <NOP>
-" imap <RIGHT> <NOP>
-" vmap <UP> <NOP>
-" vmap <DOWN> <NOP>
-" vmap <LEFT> <NOP>
-" vmap <RIGHT> <NOP>
-
-" Git
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>ga :Git add -A<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gl :Glog<CR>
-nmap <leader>gp :Gpush<CR>
-nmap <leader>gr :Gread<CR>
-nmap <leader>gw :Gwrite<CR>
-nmap <leader>ge :Gedit<CR>
 
 " Highlight
 map <C-h> :nohl<CR>
@@ -288,69 +201,15 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
 
-" Tabular
-nmap <Leader>t& :Tabularize /&<CR>
-vmap <Leader>t& :Tabularize /&<CR>
-nmap <Leader>t= :Tabularize /=<CR>
-vmap <Leader>t= :Tabularize /=<CR>
-nmap <Leader>t=> :Tabularize /=><CR>
-vmap <Leader>t=> :Tabularize /=><CR>
-nmap <Leader>t: :Tabularize /:<CR>
-vmap <Leader>t: :Tabularize /:<CR>
-nmap <Leader>t:: :Tabularize /:\zs<CR>
-vmap <Leader>t:: :Tabularize /:\zs<CR>
-nmap <Leader>t, :Tabularize /,<CR>
-vmap <Leader>t, :Tabularize /,<CR>
-nmap <Leader>t,, :Tabularize /,\zs<CR>
-vmap <Leader>t,, :Tabularize /,\zs<CR>
-nmap <Leader>t<Bar> :Tabularize /<Bar><CR>
-vmap <Leader>t<Bar> :Tabularize /<Bar><CR>
-nmap <Leader>t\ :Tabularize /\\<CR>
-vmap <Leader>t\ :Tabularize /\\<CR>
-nmap <Leader>t" :Tabularize /"<CR>
-vmap <Leader>t" :Tabularize /"<CR>
-
-" Tagbar
-map <leader>tt :TagbarToggle<CR>
-
-" Undo tree
-map <Leader>u :UndotreeToggle<CR>
-
-
 
 " ====================================================
 " Plugins configuration
 " ====================================================
 
-" Airline
-let g:airline#extensions#ale#enabled = 1
-
-" ALE
-" Lint only when I save the file
-" let g:ale_lint_on_text_changed = 'never'
-" Linters
-let g:ale_linters = {
-\   'tex': ['chktex', 'proselint', 'write-good'],
-\}
-
-" Android
-let g:android_sdk_path = "/opt/android/sdk"
-
-" Clang completition
-let g:clang_library_path='/usr/lib'
-" Fix conflix with autopair
-autocmd FileType c let AutoPairsMapCR = 0
-autocmd FileType c imap <silent> <CR> <CR><Plug>AutoPairsReturn
-
 " Git
 " Useful git help
 " Instead of reverting the cursor to the last position in the buffer, we set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-" Indent Guide
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
 
 " NERDCommenter
 " Add spaces after comment delimiters by default
@@ -370,13 +229,6 @@ let g:numbers_exclude = ['unite', 'startify', 'w3m', 'vimshell', 'tagbar', 'gund
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 
-" vim-table-mode
-" Compatibility with markdown
-let g:table_mode_corner='|'
-
-" Undo tree
-let g:undotree_SetFocusWhenToggle=1
-
 
 "=====================================================
 " Spellchecking
@@ -385,7 +237,6 @@ let g:undotree_SetFocusWhenToggle=1
 map <F9> <Esc>:silent setlocal spell! spelllang=en<CR>
 map <F10> <Esc>:silent setlocal spell! spelllang=nl<CR>
 set spellsuggest=best
-
 
 
 "=====================================================
@@ -444,4 +295,109 @@ colorscheme dracula
 set background=dark
 " colorscheme PaperColor
 " set background=light
+
+
+"=====================================================
+" OmniSharp 
+"=====================================================
+
+" OmniSharp won't work without this setting
+filetype plugin on
+
+" Set the path to the roslyn server
+" let g:OmniSharp_server_path = 'C:\tools\OmniSharp\omnisharp.http-win-x64\OmniSharp.exe'
+let g:OmniSharp_server_path = 'C:\tools\OmniSharp\omnisharp-roslyn\artifacts\publish\OmniSharp.Http.Driver\win7-x64\OmniSharp.exe'
+
+" Set the type lookup function to use the preview window instead of echoing it
+"let g:OmniSharp_typeLookupInPreview = 1
+
+" Timeout in seconds to wait for a response from the server
+let g:OmniSharp_timeout = 1
+
+" Don't autoselect first omnicomplete option, show options even if there is only
+" one (so the preview documentation is accessible). Remove 'preview' if you
+" don't want to see any documentation whatsoever.
+set completeopt=longest,menuone,preview
+
+" Fetch full documentation during omnicomplete requests.
+" There is a performance penalty with this (especially on Mono).
+" By default, only Type/Method signatures are fetched. Full documentation can
+" still be fetched when you need it with the :OmniSharpDocumentation command.
+"let g:omnicomplete_fetch_full_documentation = 1
+
+" Set desired preview window height for viewing documentation.
+" You might also want to look at the echodoc plugin.
+set previewheight=5
+
+" Syntastic
+" Get code issues and syntax errors
+let g:syntastic_cs_checkers = ['code_checker']
+
+augroup omnisharp_commands
+    autocmd!
+
+    " Synchronous build (blocks Vim)
+    "autocmd FileType cs nnoremap <buffer> <F5> :wa!<CR>:OmniSharpBuild<CR>
+    " Builds can also run asynchronously with vim-dispatch installed
+    autocmd FileType cs nnoremap <buffer> <Leader>b :wa!<CR>:OmniSharpBuildAsync<CR>
+    " Automatic syntax check on events (TextChanged requires Vim 7.4)
+    autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+
+    " Automatically add new cs files to the nearest project on save
+    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+
+    " Show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+    " Cursor can be anywhere on the line containing an issue
+    autocmd FileType cs nnoremap <buffer> <Leader>x  :OmniSharpFixIssue<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+
+    " Navigate up and down by method/property/field
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+augroup END
+
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+
+" Rename with dialog
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+" Force OmniSharp to reload the solution. Useful when switching branches etc.
+nnoremap <Leader>rl :OmniSharpReloadSolution<CR>
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+" Load the current .cs file to the nearest project
+nnoremap <Leader>tp :OmniSharpAddToProject<CR>
+
+" Start the omnisharp server for the current solution
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
+
+" Add syntax highlighting for types and interfaces
+nnoremap <Leader>th :OmniSharpHighlightTypes<CR>
+
+" Enable snippet completion
+" let g:OmniSharp_want_snippet=1
+
+" let g:OmniSharp_selector_ui = 'unite'  " Use unite.vim
+" let g:OmniSharp_selector_ui = 'ctrlp'  " Use ctrlp.vim
+" let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
+" let g:OmniSharp_selector_ui = ''       " Use vim - command line, quickfix etc.
 
