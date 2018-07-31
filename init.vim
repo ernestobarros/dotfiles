@@ -173,7 +173,7 @@ set tabstop=4            " columns per tabs
 
 " General
 set termguicolors
-set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set fillchars+=vert:\
 set number
 set ignorecase
