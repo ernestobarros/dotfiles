@@ -1,0 +1,83 @@
+{
+    "window.zoomLevel": 1,
+    "workbench.activityBar.visible": true,
+    "workbench.iconTheme": "vscode-great-icons",
+    "editor.tokenColorCustomizations": {
+        // Overrides editor colors and font style from the currently selected color theme.
+        "[Monokai]": {
+            "types": {
+                // Remove underline
+                "fontStyle": ""
+            }
+        },
+    },
+    "editor.lineNumbers": "relative",
+    "editor.fontFamily": "Fira Code, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "vim.useSystemClipboard": true,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "C:\\Program Files\\nvim\\bin\\nvim.exe",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "Z",
+                "Z"
+            ],
+            "commands": [
+                {
+                    "command": ":wq"
+                },
+            ]
+        }
+    ],
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors": {
+        "normal": [
+            "#8FBCBB",
+            "#434C5E"
+        ],
+        "insert": "#BF616A",
+        "visual": "#B48EAD",
+        "visualline": "#B48EAD",
+        "visualblock": "#A3BE8C",
+        "replace": "#D08770"
+    },
+    "files.trimTrailingWhitespace": true,
+    "reason.path.bsb": "bash -ic bsb",
+    "reason.path.ocamlfind": "bash -ic ocamlfind",
+    "reason.path.ocamlmerlin": "bash -ic ocamlmerlin",
+    "reason.path.opam": "bash -ic opam",
+    "reason.path.rebuild": "bash -ic rebuild",
+    "reason.path.refmt": "bash -ic refmt",
+    "reason.path.refmterr": "bash -ic refmterr",
+    "reason.path.rtop": "bash -ic rtop",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveTimeout": 750,
+    "reason.diagnostics.tools": [
+        "merlin",
+        "bsb"
+    ],
+    // Git Bash (used by ReasonML)
+    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\bash.exe"
+    // PowerShell
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#8FBCBB",
+        "statusBar.noFolderBackground": "#8FBCBB",
+        "statusBar.debuggingBackground": "#8FBCBB",
+        "statusBar.foreground": "#434C5E"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-t>": false,
+        // Show hover with Ctrl+k Ctrl+i
+        "<C-k>": false
+    },
+    "workbench.editor.enablePreview": false,
+    "FSharp.fsacRuntime": "netcore",
+    "workbench.colorTheme": "One Dark Pro",
+}
