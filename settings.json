@@ -16,7 +16,7 @@
     "editor.fontLigatures": true,
     "vim.useSystemClipboard": true,
     "vim.enableNeovim": true,
-    "vim.neovimPath": "C:\\Program Files\\nvim\\bin\\nvim.exe",
+    "vim.neovimPath": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -31,41 +31,24 @@
         }
     ],
     "vim.statusBarColorControl": true,
-    "vim.statusBarColors": {
-        "normal": [
-            "#8FBCBB",
-            "#434C5E"
-        ],
-        "insert": "#BF616A",
-        "visual": "#B48EAD",
-        "visualline": "#B48EAD",
-        "visualblock": "#A3BE8C",
-        "replace": "#D08770"
-    },
+    // "vim.statusBarColors.normal": [
+    //     "#8FBCBB",
+    //     "#434C5E"
+    // ],
+    "vim.statusBarColors.insert": "#BF616A",
+    "vim.statusBarColors.visual": "#B48EAD",
+    "vim.statusBarColors.visualline": "#B48EAD",
+    "vim.statusBarColors.visualblock": "#A3BE8C",
+    "vim.statusBarColors.replace": "#D08770",
     "files.trimTrailingWhitespace": true,
-    "reason.path.bsb": "bash -ic bsb",
-    "reason.path.ocamlfind": "bash -ic ocamlfind",
-    "reason.path.ocamlmerlin": "bash -ic ocamlmerlin",
-    "reason.path.opam": "bash -ic opam",
-    "reason.path.rebuild": "bash -ic rebuild",
-    "reason.path.refmt": "bash -ic refmt",
-    "reason.path.refmterr": "bash -ic refmterr",
-    "reason.path.rtop": "bash -ic rtop",
     "editor.formatOnSave": true,
     "editor.formatOnSaveTimeout": 750,
-    "reason.diagnostics.tools": [
-        "merlin",
-        "bsb"
-    ],
-    // Git Bash (used by ReasonML)
-    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\bash.exe"
     // PowerShell
     "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#8FBCBB",
-        "statusBar.noFolderBackground": "#8FBCBB",
-        "statusBar.debuggingBackground": "#8FBCBB",
-        "statusBar.foreground": "#434C5E"
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
     },
     "emmet.triggerExpansionOnTab": true,
     "emmet.includeLanguages": {
