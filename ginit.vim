@@ -9,7 +9,7 @@
 
 " Recommended Font
 " Droid Sans Mono Nerd Font Complete Windows Compatible.otf
-GuiFont! DroidSansMono\ NF:h18
+GuiFont! DroidSansMono\ NF:h12
 
 
 " Font testing:

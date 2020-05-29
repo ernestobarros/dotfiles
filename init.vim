@@ -225,6 +225,8 @@ endif
 
 " The vimrc file (part) for Visual Studio VsVim extension.
 " Use CTRL-Q to CTRL-V
+" nnoremap <c-q> <c-v>
+
 nnoremap <c-q> <c-v>
 
 " Rename word under cursor for the entire file
@@ -237,8 +239,8 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
 " Yank to clipboard
 set clipboard=unnamed
 
-let mapleader = " "
-let maplocalleader = " "
+let mapleader = ","
+let maplocalleader = ","
 
 " Shortcuts
 nmap <silent> <Space><Tab> <Esc>/<++><Enter>:nohl<Enter>"_c4l
@@ -249,6 +251,10 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Buffer
 nmap <leader>bn :bnext<CR>
+
+nnoremap <c-tab> :bnext<CR>
+nnoremap <c-s-tab> :bprevious<CR> 
+
 nmap <leader>bp :bprevious<CR>
 nmap <leader>bf :bfirst<CR>
 nmap <leader>bd :bdelete<CR>
@@ -428,7 +434,7 @@ endfunction
 "=====================================================
 " DevIcons font adjustements (could not get Fira font to work properly)
 " ./ginit.vim for the gui font
-set guifont=DroidSansMono\ NF:h18
+set guifont=DroidSansMono\ NF:12
 " For the dots try:
 autocmd FileType nerdtree setlocal nolist
 let g:airline_powerline_fonts=1
