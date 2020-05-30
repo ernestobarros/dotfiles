@@ -1,22 +1,11 @@
-" FuraMono-Bold Powerline.otf
-" GuiFont! Fira\ Mono\ for\ Powerline:h16
+" How to turn off the GUI tabline?
+GuiTabline 0
 
-" FiraCode-Regular_0.ttf
-" GuiFont! Fira\ Code:h18
-
-" Fura Code Light Nerd Font Complete Windows Compatible.ttf
-" GuiFont! FuraCode\ NF:h18
+" How to turn off GUI completion menu?
+GuiPopupmenu 0
+call GuiWindowMaximized(1)
 
 " Recommended Font
 " Droid Sans Mono Nerd Font Complete Windows Compatible.otf
-GuiFont! DroidSansMono\ NF:h12
-
-
-" Font testing:
-" @@@@
-" &&&&&
-" rrrrrrrr
-"
-" ===
-" -> |>
+GuiFont! DroidSansMono\ NF:h16
 
