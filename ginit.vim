@@ -7,5 +7,5 @@ call GuiWindowMaximized(1)
 
 " Recommended Font
 " Droid Sans Mono Nerd Font Complete Windows Compatible.otf
-GuiFont! DroidSansMono\ NF:h16
-
+" GuiFont! DroidSansMono\ NF:h11
+GuiFont! Consolas:h11

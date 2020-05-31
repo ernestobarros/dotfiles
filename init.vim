@@ -96,6 +96,14 @@ Plug 'tpope/vim-speeddating'
 " Simplified clipboard functionality for Vim.
 " Plug 'svermeulen/vim-easyclip'
 
+"=====================================================
+"   Under review - https://github.com/jdhao/nvim-config/blob/master/plugins.vim
+"=====================================================
+" Modern matchit implementation
+Plug 'andymass/vim-matchup'
+"=====================================================
+
+
 " Comment functions so powerful—no comment necessary.
 Plug 'scrooloose/nerdcommenter'
 " CtrlP
@@ -113,15 +121,15 @@ call plug#end()
 "=====================================================
 colorscheme dracula
 " Do not always fancy.
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
 " Smarter tab line
 " Automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
 
 " Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Numbers.vim
 let g:enable_numbers = 1
