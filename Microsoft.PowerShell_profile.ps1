@@ -5,8 +5,8 @@ if (Test-path $HistoryFilePath) { Import-Clixml $HistoryFilePath | Add-History }
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 # Import oh-my-posh and dependecies
-Import-Module -Name posh-git -ErrorAction SilentlyContinue
-Import-Module oh-my-posh
+# Import-Module -Name posh-git -ErrorAction SilentlyContinue
+# Import-Module oh-my-posh
 
 
 # Chocolatey profile
@@ -15,5 +15,4 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 # Neovim
-# Set-Alias vi 'nvim-qt'
-function vi { nvim-qt --maximized $args }
+function vi { nvim-qt --no-ext-tabline -- $args }
