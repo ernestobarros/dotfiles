@@ -1,8 +1,24 @@
-# dotfiles
-Neovim dotfiles (switch github branch for different experiment)
+# PowerShell 7.1
 
-#### See Dracula branch for the best version
-Tested on Win10 with font
-[Droid Sans Mono Nerd Font Complete Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono/complete/Droid+Sans+Mono+Nerd+Font+Complete+Windows+Compatible.otf).
+## About Microsoft.PowerShell_profile.ps1
+- File location
+```
+$PROFILE
+```
+- Version
+```
+Power
+$PSVersionTable
 
-Tried FiraCode "Fura Code Light Nerd Font Complete Windows Compatible.ttf" but had some clipped font issues.
+Name                           Value
+----                           -----
+PSVersion                      7.0.1
+PSEdition                      Core
+```
+- Dependencies
+```
+choco install fzf -y
+choco install powershell-core -y
+choco install poshgit -y
+choco install oh-my-posh -y
+```
