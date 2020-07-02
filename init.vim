@@ -23,12 +23,22 @@ nnoremap <leader>bd :bdelete<CR>
 " ====================================================
 syntax on
 
+" Use mouse to copy and paste like PowerShell terminal.
+set mouse=a
+inoremap <RightMouse> <c-r>+
+cnoremap <RightMouse> <c-r>+
+nnoremap <RightMouse> "+p
+vmap <Esc> "+y
+
+set columns=188 "When opened in explorer. Then give me the Maximized window.
+set textwidth=170 wrap "Wrap long comments.
 set guicursor=
 set noshowmatch
 set relativenumber
 set hidden
 set noerrorbells
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set smartindent
 set nu
 set nowrap
@@ -76,8 +86,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Dracula theme
-Plug 'dracula/vim'
+" Color theme
+" TODO evaluating gruvbox.
+" Plug 'dracula/vim'
+Plug 'morhetz/gruvbox'
+Plug 'tonsky/firacode'
 
 " Easy Motion : faster move in vim
 " Press <Leader><Leader> and the letter that you want to go
@@ -103,6 +116,19 @@ Plug 'tpope/vim-speeddating'
 Plug 'andymass/vim-matchup'
 "=====================================================
 
+"=====================================================
+" Make your Vim/Neovim as smart as VSCode.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Then, use :CocInstall coc-omnisharp to install.
+" Recommended plugins for syntax highlighting
+Plug 'sheerun/vim-polyglot'
+"=====================================================
+
+" fzf is a general-purpose command-line fuzzy finder.
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+" ripgrep (rg) recursively searches directories for a regex pattern.
+Plug 'burntsushi/ripgrep'
 
 " Comment functions so powerful—no comment necessary.
 Plug 'scrooloose/nerdcommenter'
@@ -116,12 +142,62 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " *****************************************************************************
 
+" --- vim go (polyglot) settings.
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_auto_sameids = 1
+
+"=====================================================
+" Conquer of Completion
+"=====================================================
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <C-space> coc#refresh()
+
+" GoTo code navigation.
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+nmap <leader>g] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+nnoremap <leader>cr :CocRestart
+"=====================================================
+
 "=====================================================
 " Choose theme
 "=====================================================
-colorscheme dracula
+" TODO evaluating gruvbox.
+" colorscheme dracula
+colorscheme gruvbox
 " Do not always fancy.
 " let g:airline_powerline_fonts = 1
+
+" Change highlight color dracula (TODO looke for better colorscheme)
+highlight Visual cterm=bold ctermbg=Blue ctermfg=NONE
 
 " Smarter tab line
 " Automatically displays all buffers when there's only one tab open.
@@ -148,6 +224,8 @@ let g:NERDCompactSexyComs = 1
 "=====================================================
 " Spellchecking
 "=====================================================
+language nl_NL
+language en_US
 map <F9> <Esc>:silent setlocal spell! spelllang=en<CR>
 map <F10> <Esc>:silent setlocal spell! spelllang=nl<CR>
 set spellsuggest=best
@@ -161,4 +239,3 @@ endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
 " ******************************************************************************
-
